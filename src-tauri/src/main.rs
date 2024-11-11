@@ -14,9 +14,9 @@ extern crate winreg;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serde::Serialize;
-use systray_menu::CONNECT_MENU_ITEMS;
 use std::sync::Mutex;
-use tauri::{Manager, Window, SystemTray, SystemTrayEvent};
+use systray_menu::CONNECT_MENU_ITEMS;
+use tauri::{Manager, SystemTray, SystemTrayEvent, Window};
 use tauri_plugin_autostart::MacosLauncher;
 use tauri_plugin_window_state::{AppHandleExt, StateFlags};
 use windows::{
@@ -579,7 +579,7 @@ async fn install_wiresock() -> Result<String, String> {
 
     // Build the path to the WireSock installer
     let wiresock_installer_path = &mut current_dir.into_os_string().into_string().unwrap();
-    wiresock_installer_path.push_str(r#"\wiresock\wiresock-vpn-client-x64-1.2.37.1.msi"#);
+    wiresock_installer_path.push_str(r#"\wiresock\wiresock-vpn-client-x64-1.4.7.1.msi"#);
 
     // Use powershell to launch msiexec so we can get the exit code to see if WireSock was installed succesfully
     let arg = format!("(Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i\", '\"{}\"', \"/qr\" -Wait -Passthru).ExitCode", wiresock_installer_path);

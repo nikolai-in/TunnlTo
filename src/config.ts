@@ -1,1 +1,1 @@
-export const WIRESOCK_VERSION = '1.2.37.1'
+export const WIRESOCK_VERSION = '1.4.7.1'
